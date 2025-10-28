@@ -10,8 +10,12 @@ let estados = { 1: '', 2: '', 3: '' }; // 👈 estados de semáforos
 // ======================
 // AUXILIARES
 // ======================
-function get(id){ return document.getElementById(id).value.trim(); }
-function chk(id){ return document.getElementById(id).checked ? 'Sí' : 'No'; }
+function get(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+function chk(id){ return document.getElementById(id).checked ? '1' : '0'; }
 
 /**
  * Función auxiliar segura para obtener el dataURL de un elemento canvas.
@@ -34,7 +38,7 @@ function generateFolio(){
     const now = new Date();
     const y = now.getFullYear(), m = String(now.getMonth()+1).padStart(2,'0'), d = String(now.getDate()).padStart(2,'0');
     const h = String(now.getHours()).padStart(2,'0'), min = String(now.getMinutes()).padStart(2,'0');
-    return `Service_Report-${company}-${y}${m}${d}-${h}${min}`;
+    return `MP_Report-${company}-${y}${m}${d}-${h}${min}`;
 }
 
 // ======================
@@ -42,7 +46,9 @@ function generateFolio(){
 // ======================
 document.getElementById('saveBtn').addEventListener('click', () => {
 const record = {
-  // 1 – Datos de cliente
+  folio: generateFolio(),
+
+  // 1️⃣ Datos de cliente
   OT: get('OT'),
   datetime: get('datetime'),
   company: get('company'),
@@ -50,53 +56,128 @@ const record = {
   phone: get('phone'),
   city: get('city'),
 
-  // 2 – Datos del equipo
+  // 2️⃣ Datos del equipo
   description: get('description'),
   brand: get('brand'),
   model: get('model'),
   serial: get('serial'),
   controlnum: get('controlnum'),
-  status: get('status'),
+  status: get('status_test'),
 
-  // 3 – Condiciones ambientales
+  // 3️⃣ Condiciones ambientales
   ubication: get('ubication'),
   temperature: get('temperature'),
   humidity: get('humidity'),
 
-  // 4 – Servicio solicitado (oculto)
-  info_fail: get('info_fail'),
+  // 4️⃣ Mediciones
+  static_ls: get('static_ls'),
+  static_hs: get('static_hs'),
 
-  // 4 – Inspección inicial
-  satus: get('satus'), // ⚠️ probablemente debería ser 'status'
-  if_not_work: get('if_not_work'),
-  part_change: get('part_change'),
+  resistance_hs_1: get('resistance_hs_1'),
+  resistance_hs_2: get('resistance_hs_2'),
+  resistance_hs_3: get('resistance_hs_3'),
 
-  // 5 – Servicio ejecutado
-  act_work: get('act_work'),
-  ini_work: get('ini_work'),
-  fin_work: get('fin_work'),
+  resistance_ls_1: get('resistance_ls_1'),
+  resistance_ls_2: get('resistance_ls_2'),
+  resistance_ls_3: get('resistance_ls_3'),
 
-  // 6 – Pruebas
-  heat_from: get('heat_from'),
-  heat_target: get('heat_target'),
+  resistance_circ_1: get('resistance_circ_1'),
+  resistance_circ_2: get('resistance_circ_2'),
+  resistance_circ_3: get('resistance_circ_3'),
+
+  resistance_heat_1: get('resistance_heat_1'),
+  resistance_heat_2: get('resistance_heat_2'),
+  resistance_heat_3: get('resistance_heat_3'),
+
+  resistance_hum_1: get('resistance_hum_1'),
+  resistance_hum_2: get('resistance_hum_2'),
+  resistance_hum_3: get('resistance_hum_3'),
+
+  voltaje_hs_1: get('voltaje_hs_1'),
+  voltaje_hs_2: get('voltaje_hs_2'),
+  voltaje_hs_3: get('voltaje_hs_3'),
+
+  voltaje_ls_1: get('voltaje_ls_1'),
+  voltaje_ls_2: get('voltaje_ls_2'),
+  voltaje_ls_3: get('voltaje_ls_3'),
+
+  to_ground: get('to_ground'),
+
+  current_hs_1: get('current_hs_1'),
+  current_hs_2: get('current_hs_2'),
+  current_hs_3: get('current_hs_3'),
+
+  current_ls_1: get('current_ls_1'),
+  current_ls_2: get('current_ls_2'),
+  current_ls_3: get('current_ls_3'),
+
+  current_circ_1: get('current_circ_1'),
+  current_circ_2: get('current_circ_2'),
+  current_circ_3: get('current_circ_3'),
+
+  current_heat_1: get('current_heat_1'),
+  current_heat_2: get('current_heat_2'),
+  current_heat_3: get('current_heat_3'),
+
+  current_hum_1: get('current_hum_1'),
+  current_hum_2: get('current_hum_2'),
+  current_hum_3: get('current_hum_3'),
+
+  pressures_hs_1: get('pressures_hs_1'),
+  pressures_hs_2: get('pressures_hs_2'),
+  pressures_ls_1: get('pressures_ls_1'),
+  pressures_ls_2: get('pressures_ls_2'),
+
+  // 5️⃣ Chequeo eléctrico
+  main_switch: chk('main_switch'),
+  switch_covers: chk('switch_covers'),
+  tighting: chk('tighting'),
+  headfan: chk('headfan'),
+  balance: chk('balance'),
+  fuses_ok: chk('fuses_ok'),
+  faseado: chk('faseado'),
+  crankcase: chk('crankcase'),
+  grounded: chk('grounded'),
+
+  // 6️⃣ Chequeo en refrigeración
+  fans_ok: chk('fans_ok'),
+  coils_ok: chk('coils_ok'),
+  armafles_ok: chk('armafles_ok'),
+  inyection_ok: chk('inyection_ok'),
+  oil_ok: chk('oil_ok'),
+  sights_ok: chk('sights_ok'),
+  acid_ok: chk('acid_ok'),
+  noleaks: chk('noleaks'),
+  hilow: chk('hilow'),
+  lowoil: chk('lowoil'),
+  rotalocks: chk('rotalocks'),
+  capillaries: chk('capillaries'),
+  frosty: chk('frosty'),
+
+  // 7️⃣ Pruebas
+  hum_from: get('hum_from'),
+  hum_target: get('hum_target'),
   heat_test: chk('heat_test'),
   hum_low: get('hum_low'),
-  hum_high: get('hum_high'),
+  hum_hig: get('hum_hig'),
   hum_test: chk('hum_test'),
-  temp_high: get('temp_high'),
+  temp_hig: get('temp_hig'),
   temp_low: get('temp_low'),
   cold_test: chk('cold_test'),
   pulldown: get('pulldown'),
 
-  // 7 – Observaciones
+  // 8️⃣ Semáforos
+  estado_ref: estados[1],
+  estado_heat: estados[2],
+  estado_elec: estados[3],
+
+  // 9️⃣ Observaciones
   notes: get('notes'),
 
-  // 8 – Firma especialista
+  // 🔟 Firmas
   name_esp: get('name_esp'),
-  signatureEsp: getSignatureData('signaturePreviewEsp'),
-
-  // 9 – Firma cliente
   name_cus: get('name_cus'),
+  signatureEsp: getSignatureData('signaturePreviewEsp'),
   signatureCus: getSignatureData('signaturePreviewCus')
 };
 
@@ -132,63 +213,43 @@ function renderTable(){
     const head = document.getElementById('tableHead');
     const body = document.getElementById('tableBody');
     body.innerHTML = '';
-const columns = [
-  // 1 – Datos de cliente
-  'OT',
-  'datetime',
-  'company',
-  'engineer',
-  'phone',
-  'city',
+    const columns = [
+  'OT', 'datetime', 'company', 'engineer', 'phone', 'city',
+  'description', 'brand', 'model', 'serial', 'controlnum', 'status',
+  'ubication', 'temperature', 'humidity',
 
-  // 2 – Datos del equipo
-  'description',
-  'brand',
-  'model',
-  'serial',
-  'controlnum',
-  'status',
+  'static_ls', 'static_hs',
 
-  // 3 – Condiciones ambientales
-  'ubication',
-  'temperature',
-  'humidity',
+  'resistance_hs_1', 'resistance_hs_2', 'resistance_hs_3',
+  'resistance_ls_1', 'resistance_ls_2', 'resistance_ls_3',
+  'resistance_circ_1', 'resistance_circ_2', 'resistance_circ_3',
+  'resistance_heat_1', 'resistance_heat_2', 'resistance_heat_3',
+  'resistance_hum_1', 'resistance_hum_2', 'resistance_hum_3',
 
-  // 4 – Servicio solicitado (oculto en HTML, pero tiene ID)
-  'info_fail',
+  'voltaje_hs_1', 'voltaje_hs_2', 'voltaje_hs_3',
+  'voltaje_ls_1', 'voltaje_ls_2', 'voltaje_ls_3',
+  'to_ground',
 
-  // 4 – Inspección inicial
-  'satus',
-  'if_not_work',
-  'part_change',
+  'current_hs_1', 'current_hs_2', 'current_hs_3',
+  'current_ls_1', 'current_ls_2', 'current_ls_3',
+  'current_circ_1', 'current_circ_2', 'current_circ_3',
+  'current_heat_1', 'current_heat_2', 'current_heat_3',
+  'current_hum_1', 'current_hum_2', 'current_hum_3',
 
-  // 5 – Servicio ejecutado
-  'act_work',
-  'ini_work',
-  'fin_work',
+  'pressures_hs_1', 'pressures_hs_2', 'pressures_ls_1', 'pressures_ls_2',
 
-  // 6 – Pruebas
-  'heat_from',
-  'heat_target',
-  'heat_test',
-  'hum_low',
-  'hum_high',
-  'hum_test',
-  'temp_high',
-  'temp_low',
-  'cold_test',
-  'pulldown',
+  'main_switch', 'switch_covers', 'tighting', 'headfan', 'balance',
+  'fuses_ok', 'faseado', 'crankcase', 'grounded',
 
-  // 7 – Observaciones
-  'notes',
+  'fans_ok', 'coils_ok', 'armafles_ok', 'inyection_ok', 'oil_ok',
+  'sights_ok', 'acid_ok', 'noleaks', 'hilow', 'lowoil', 'rotalocks',
+  'capillaries', 'frosty',
 
-  // 8 – Firma especialista
-  'name_esp',
-  'signatureEsp',
+  'hum_from', 'hum_target', 'heat_test', 'hum_low', 'hum_hig',
+  'hum_test', 'temp_hig', 'temp_low', 'cold_test', 'pulldown',
 
-  // 9 – Firma cliente
-  'name_cus',
-  'signatureCus'
+  'estado_ref', 'estado_heat', 'estado_elec',
+  'notes', 'name_esp', 'name_cus', 'signatureEsp', 'signatureCus'
 ];
     
     head.innerHTML = columns.map(c => `<th>${c.toUpperCase().replace(/_/g, ' ')}</th>`).join('');
@@ -218,7 +279,7 @@ document.getElementById('exportBtn').addEventListener('click', ()=>{
     const ws = XLSX.utils.json_to_sheet(records);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Reportes');
-    XLSX.writeFile(wb, 'Service_reports.xlsx');
+    XLSX.writeFile(wb, 'Preventive_reports.xlsx');
 });
 
 // ======================
