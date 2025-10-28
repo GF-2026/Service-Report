@@ -68,19 +68,105 @@
             </div>
             
             <h6>Ubicar elemento a cambiar en el diagrama y adjuntar foto en el correo.</h6>
-         <hr>
-<!-- 5– Diagnóstico -->        
-            <div class="section-header"><strong>5 – Servicio ejecutado</strong></div>
+<!-- 5– Mediciones -->
+            <hr>
+            <div class="section-header"><strong>5 – Mediciones</strong></div>
             <div class="grid">
-                <div><label>Actividades del Servicio:*<br></strong></label><input type="text" id="act_work"></div>
+                    <div>
+                        <label>Amperajes compresor HS (A):</label><br>
+                        <div><label>Fase A</label><input type="text" id="current_hs_1"></div>
+                        <div><label>Fase B</label><input type="text" id="current_hs_2"></div>
+                        <div><label>Fase C</label><input type="text" id="current_hs_3"></div>
+                    </div>
+
+                    <div>
+                        <label>Amperajes compresor LS (A):</label><br>
+                        <div><label>Fase A</label><input type="text" id="current_ls_1"></div>
+                        <div><label>Fase B</label><input type="text" id="current_ls_2"></div>
+                        <div><label>Fase C</label><input type="text" id="current_ls_3"></div>
+                    </div>
+
+                    <div>
+                        <label>Amperajes circuladores (A):</label><br>
+                        <div><label>Fase de Circ. #1</label><input type="text" id="current_circ_1"></div>
+                        <div><label>Fase de Circ. #2</label><input type="text" id="current_circ_2"></div>
+                        <div><label>Fase de Circ. #3</label><input type="text" id="current_circ_3"></div>
+                    </div>
+
+                    <div>
+                        <label>Amperajes heater (A):</label><br>
+                        <div><label>H1-H2</label><input type="text" id="current_heat_1"></div>
+                        <div><label>H1-H3</label><input type="text" id="current_heat_2"></div>
+                        <div><label>H2-H3</label><input type="text" id="current_heat_3"></div>
+                    </div>
+
+                    <div>
+                        <label>Amperajes humidificador (A):</label><br>
+                        <div><label>Humidificador #1</label><input type="text" id="current_hum_1"></div>
+                        <div><label>Humidificador #2</label><input type="text" id="current_hum_2"></div>
+                        <div><label>Humidificador #3</label><input type="text" id="current_hum_3"></div>
+                    </div>
+
+                    <div>
+                        <label>Presiones compresor HS: (Psi)</label><br>
+                        <div><label>Presión de succión HS:</label><input type="text" id="pressures_hs_1"></div>
+                        <div><label>Presión de descarga HS</label><input type="text" id="pressures_hs_2"></div>
+                    </div>
+
+                    <div>
+                        <label>Presiones compresor LS (Psi):</label><br>
+                        <div><label>Presión de succión LS:</label><input type="text" id="pressures_ls_1"></div>
+                        <div><label>Presión de descarga LS:</label><input type="text" id="pressures_ls_2"></div>
+                     </div>
+                </div>
+<!-- 6– Checklist eléctrico-->
+            <hr>
+            <div class="section-header"><strong>6 – Revisión eléctrica</strong></div>
+            <div class="grid checkboxes">
+                <label><input type="checkbox" id="main_switch">Switch principal, hardware y cables correctos</label>
+                <label><input type="checkbox" id="switch_covers">Cubiertas de presostatos</label>
+                <label><input type="checkbox" id="tighting">Conexiones reapretadas</label>
+                <label><input type="checkbox" id="headfan">Revisión de headfans</label>
+                <label><input type="checkbox" id="balance">Carga balanceada</label>
+                <label><input type="checkbox" id="fuses_ok">Fusibles correctos</label>
+                <label><input type="checkbox" id="faseado">Faseado correcto</label>
+                <label><input type="checkbox" id="crankcase">Calentador de cárter</label>
+                <label><input type="checkbox" id="grounded">Tierra física</label>
+            </div>
+
+<!-- 7 – Chequeo en refrigeración -->
+            <hr>
+            <div class="section-header"><strong>7 – Revisión en refrigeración</strong></div>
+            <div class="grid checkboxes">
+                <label><input type="checkbox" id="fans_ok">Ventiladores OK</label>
+                <label><input type="checkbox" id="coils_ok">Serpentines OK</label>
+                <label><input type="checkbox" id="armafles_ok">Armaflex OK</label>
+                <label><input type="checkbox" id="inyection_ok">Válvula de inyección OK</label>
+                <label><input type="checkbox" id="oil_ok">Nivel de aceite correcto</label>
+                <label><input type="checkbox" id="sights_ok">Mirillas OK</label>
+                <label><input type="checkbox" id="acid_ok">Prueba de acidez</label>
+                <label><input type="checkbox" id="noleaks">Sin fugas</label>
+                <label><input type="checkbox" id="hilow">Chequeo Hi/Low</label>
+                <label><input type="checkbox" id="lowoil">Protección de aceite OK</label>
+                <label><input type="checkbox" id="rotalocks">Capuchones de rotalocks</label>
+                <label><input type="checkbox" id="capillaries">Capilares OK</label>
+                <label><input type="checkbox" id="frosty">Escarche de succión</label>
+            </div>
+
+<!-- 8– Diagnóstico -->       
+             <hr> 
+            <div class="section-header"><strong>8 – Servicio ejecutado</strong></div>
+            <div class="grid">
+                <div class="fullwidth"><label>Actividades del Servicio:*</strong><textarea id="act_work"></textarea></label></div><br>
+                            
             </div>
                 <div><label>Hora de inicio de labores en el equipo:*<br></label><input type="time" id="ini_work"></div>
              <div class="grid">
                 <div><label>Hora de fin de labores en el equipo:*<br></strong></label><input type="time" id="fin_work"></div>
             </div>        
-<!-- 6 – Pruebas -->
+<!-- 9 – Pruebas -->
             <hr>
-            <div class="section-header"><strong>6 – Pruebas</strong></div>
+            <div class="section-header"><strong>9 – Pruebas</strong></div>
             <div class="grid">
                 <div><label>Temp. ambiente (°C):</label><input type="text" id="heat_from"></div>
                 <div><label>Punto máximo -10 (°C):</label><input type="text" id="heat_target"></div>
@@ -93,19 +179,19 @@
                 <label><input type="checkbox" id="cold_test">Prueba de enfriamiento (soak 30 min)</label>
                 <div><label>Duración (min):</label><input type="text" id="pulldown"></div>
             </div>
-<!-- 7 – Observaciones -->
+<!-- 10 – Observaciones -->
             <hr>
-            <div class="section-header"><strong>7 – Observaciones del cliente</strong></div>
+            <div class="section-header"><strong>10 – Observaciones del cliente</strong></div>
             <textarea id="notes"></textarea>
-<!-- 8 – Firma de especialista -->
+<!-- 11 – Firma de especialista -->
             <hr>
-            <div class="section-header"><strong>8 – Firma de especialista</strong></div>
+            <div class="section-header"><strong>11 – Firma de especialista</strong></div>
             <div><label>Nombre de Especialista</label><input type="text" id="name_esp"></div>
             <button type="button" id="openSignatureEsp">Firma de Especialista</button>
             <canvas id="signaturePreviewEsp" width="300" height="150"></canvas>
-<!-- 9 – Firma de cliente -->
+<!-- 12 – Firma de cliente -->
             <hr>
-            <div class="section-header"><strong>9 – Firma de cliente</strong></div>
+            <div class="section-header"><strong>12 – Firma de cliente</strong></div>
             <div><label>Nombre de Cliente</label><input type="text" id="name_cus"></div>
             <button type="button" id="openSignatureCus">Firma de Cliente</button>
             <canvas id="signaturePreviewCus" width="300" height="150"></canvas>
