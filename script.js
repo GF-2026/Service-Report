@@ -69,6 +69,7 @@ const record = {
   temperature: get('temperature'),
   humidity: get('humidity'),
 
+  info_fail: get('info_fail'),
   act_work: get('act_work'),
 
   // 4️⃣ Mediciones
