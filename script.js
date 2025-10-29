@@ -218,7 +218,7 @@ function renderTable(){
     const columns = [
   'OT', 'datetime', 'company', 'engineer', 'phone', 'city',
   'description', 'brand', 'model', 'serial', 'controlnum', 'status',
-  'ubication', 'temperature', 'humidity',
+  'ubication', 'temperature', 'humidity', 'act_work',
 
   'static_ls', 'static_hs',
 
