@@ -45,10 +45,19 @@
             <div class="section-header"><strong>3 – Condiciones ambientales del site</strong></div>
             <div class="grid">
                 <div><label>Ubicación de equipo:</label><input type="text" id="ubication"></div>
-                <div><label>Temperatura (°C):</label><input type="number" step="0.1" id="temperature"></div>
-                <div><label>Humedad (%):</label><input type="number" step="0.1" id="humidity"></div>
+                <div><label>Temperatura (°C):</label><input type="number"  id="temperature"></div>
+                <div><label>Humedad (%):</label><input type="number"  id="humidity"></div>
+            </div>
+            <div style="display: none;">            
+<!-- 4 – Datos del equipo -->
+            <hr>
+            <div class="section-header"><strong>4 – Servicio solicitado</strong></div>
+            <div class="grid">
+                <div><label>Anote el código de falla y/o qué ocasiona:*</label><input type="text" id="info_fail"></div>
+            </div>
             </div>
 <!-- 4– Inspección -->
+            <hr>
             <div class="section-header"><strong>4 – Inspección inicial del equipo</strong></div>
             <div class="grid">
          
@@ -114,15 +123,15 @@
             <hr>
             <div class="section-header"><strong>6 – Revisión eléctrica</strong></div>
             <div class="grid checkboxes">
-                <label><input type="checkbox" id="main_switch">Switch principal, hardware y cables correctos</label>
-                <label><input type="checkbox" id="switch_covers">Cubiertas de presostatos</label>
-                <label><input type="checkbox" id="tighting">Conexiones reapretadas</label>
-                <label><input type="checkbox" id="headfan">Revisión de headfans</label>
-                <label><input type="checkbox" id="balance">Carga balanceada</label>
+                <label><input type="checkbox" id="main_switch_ok">Switch principal, hardware y cables correctos</label>
+                <label><input type="checkbox" id="switch_covers_ok">Cubiertas de presostatos</label>
+                <label><input type="checkbox" id="tighting_ok">Conexiones reapretadas</label>
+                <label><input type="checkbox" id="headfan_ok">Revisión de headfans</label>
+                <label><input type="checkbox" id="balance_ok">Carga balanceada</label>
                 <label><input type="checkbox" id="fuses_ok">Fusibles correctos</label>
-                <label><input type="checkbox" id="faseado">Faseado correcto</label>
-                <label><input type="checkbox" id="crankcase">Calentador de cárter</label>
-                <label><input type="checkbox" id="grounded">Tierra física</label>
+                <label><input type="checkbox" id="faseado_ok">Faseado correcto</label>
+                <label><input type="checkbox" id="crankcase_ok">Calentador de cárter</label>
+                <label><input type="checkbox" id="grounded_ok">Tierra física</label>
             </div>
 
 <!-- 7 – Chequeo en refrigeración -->
@@ -133,23 +142,23 @@
                 <label><input type="checkbox" id="coils_ok">Serpentines OK</label>
                 <label><input type="checkbox" id="armafles_ok">Armaflex OK</label>
                 <label><input type="checkbox" id="inyection_ok">Válvula de inyección OK</label>
-                <label><input type="checkbox" id="oil_ok">Nivel de aceite correcto</label>
+                <label><input type="checkbox" id="level_oil_ok">Nivel de aceite correcto</label>
                 <label><input type="checkbox" id="sights_ok">Mirillas OK</label>
                 <label><input type="checkbox" id="acid_ok">Prueba de acidez</label>
-                <label><input type="checkbox" id="noleaks">Sin fugas</label>
-                <label><input type="checkbox" id="hilow">Chequeo Hi/Low</label>
-                <label><input type="checkbox" id="lowoil">Protección de aceite OK</label>
-                <label><input type="checkbox" id="rotalocks">Capuchones de rotalocks</label>
-                <label><input type="checkbox" id="capillaries">Capilares OK</label>
-                <label><input type="checkbox" id="frosty">Escarche de succión</label>
+                <label><input type="checkbox" id="noleaks_ok">Sin fugas</label>
+                <label><input type="checkbox" id="hilow_protect_ok">Chequeo Hi/Low</label>
+                <label><input type="checkbox" id="protect_lowleveloil_ok">Protección de aceite OK</label>
+                <label><input type="checkbox" id="rotalocks_ok">Capuchones de rotalocks</label>
+                <label><input type="checkbox" id="capillaries_ok">Capilares OK</label>
+                <label><input type="checkbox" id="frosty_ok">Escarche de succión</label>
             </div>
 
 <!-- 8– Diagnóstico -->       
              <hr> 
             <div class="section-header"><strong>8 – Servicio ejecutado</strong></div>
             <div class="grid">
-                <div class="fullwidth"><label>Falla reportada/encontrada:*</strong><textarea id="info_fail"></textarea></label></div><br>
-                <div class="fullwidth"><label>Actividades del Servicio:*</strong><textarea id="act_work"></textarea></label></div><br>             
+                <div class="fullwidth"><label>Actividades del Servicio:*</strong><textarea id="act_work"></textarea></label></div><br>
+                            
             </div>
                 <div><label>Hora de inicio de labores en el equipo:*<br></label><input type="time" id="ini_work"></div>
              <div class="grid">
@@ -161,15 +170,38 @@
             <div class="grid">
                 <div><label>Temp. ambiente (°C):</label><input type="text" id="heat_from"></div>
                 <div><label>Punto máximo -10 (°C):</label><input type="text" id="heat_target"></div>
-                <label><input type="checkbox" id="heat_test">Prueba de calentamiento (soak 30 min)</label>
+                <label><input type="checkbox" id="heat_test_ok">Prueba de calentamiento (soak 30 min)</label>
                 <div><label>Humedad baja (20 %HR):</label><input type="text" id="hum_low"></div>
                 <div><label>Humedad alta (80 %HR):</label><input type="text" id="hum_high"></div>
-                <label><input type="checkbox" id="hum_test">Prueba de humedad (soak 30 min c/u)</label>
+                <label><input type="checkbox" id="hum_test_ok">Prueba de humedad (soak 30 min c/u)</label>
                 <div><label>Punto máximo -10 (°C):</label><input type="text" id="temp_high"></div>
                 <div><label>Punto máximo +10 (°C):</label><input type="text" id="temp_low"></div>
-                <label><input type="checkbox" id="cold_test">Prueba de enfriamiento (soak 30 min)</label>
+                <label><input type="checkbox" id="cold_test_ok">Prueba de enfriamiento (soak 30 min)</label>
                 <div><label>Duración (min):</label><input type="text" id="pulldown"></div>
             </div>
+
+<!-- Pregunta: ¿Cuándo se sugiere el siguiente servicio? -->
+<div class="pregunta">
+  <p><strong>¿Cuándo se sugiere el siguiente servicio?</strong></p>
+
+  <label class="opcion verde">
+    <input type="radio" name="proximo_servicio" value="En 3 meses"> En 3 meses
+  </label>
+
+  <label class="opcion amarillo">
+    <input type="radio" name="proximo_servicio" value="En 6 meses"> En 6 meses
+  </label>
+
+  <label class="opcion rojo">
+    <input type="radio" name="proximo_servicio" value="En 1 año"> En 1 año
+  </label>
+</div>
+
+<!-- Botón para probar el resultado -->
+<button type="button" onclick="verProximoServicio()">Ver resultado</button>
+
+<p id="resultado_servicio"></p>
+
 <!-- 10 – Observaciones -->
             <hr>
             <div class="section-header"><strong>10 – Observaciones del cliente</strong></div>
@@ -194,6 +226,8 @@
                 <button type="button" id="exportBtn">Exportar a Excel</button>
                 <button type="button" id="deleteAllBtn" class="secondary">Borrar registros</button>
             </div>
+<!-- Botón para enviar correo -->
+<button type="button" id="sendEmailBtn">Enviar reporte por correo</button>
         </form>
 <!-- Tabla de registros -->
         <div class="card">
