@@ -602,8 +602,5 @@ document.getElementById('sendEmailBtn').addEventListener('click', () => {
   const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
   window.location.href = mailtoLink;
 });
-    
-    // Abrir cliente de correo predeterminado
-    window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
 
 
