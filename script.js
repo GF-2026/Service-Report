@@ -573,10 +573,9 @@ function verProximoServicio() {
   }
 }
 document.getElementById('sendEmailBtn').addEventListener('click', () => {
-  const to = "tck@olimp0.com";
+  const to = "tck@empresa.com";
   const subject = encodeURIComponent("Nuevo reporte preventivo");
 
-  // Obtiene los valores sin codificar
   const company = get('company');
   const folio = generateFolio('folio');
   const model = get('model');
@@ -584,22 +583,21 @@ document.getElementById('sendEmailBtn').addEventListener('click', () => {
   const status = get('status_test');
   const notes = get('notes_Esp');
 
-  // Usa \r\n para compatibilidad con todos los clientes de correo
-  const bodyText = 
-    `Hola,\r\n\r\nTienes un nuevo reporte preventivo:\r\n\r\n` +
-    `Folio: ${folio}\r\n` +
-    `Empresa: ${company}\r\n` +
-    `Modelo: ${model}\r\n` +
-    `Serial: ${serial}\r\n` +
-    `Status: ${status}\r\n` +
-    `Notas: ${notes}\r\n\r\n` +
-    `Por favor, adjunta el archivo del registro antes de enviar.\r\n\r\nGracias.`;
+  // Construye el texto normal (sin encode todavía)
+  let bodyText = 
+    `Hola,\n\nTienes un nuevo reporte preventivo:\n\n` +
+    `Folio: ${folio}\n` +
+    `Empresa: ${company}\n` +
+    `Modelo: ${model}\n` +
+    `Serial: ${serial}\n` +
+    `Status: ${status}\n` +
+    `Notas: ${notes}\n\n` +
+    `Por favor, adjunta el archivo del registro antes de enviar.\n\nGracias.`;
 
-  // Ahora sí codificas todo el cuerpo completo
-  const body = encodeURIComponent(bodyText);
+  // 🔥 Reemplaza \n por %0D%0A (salto compatible con todos)
+  bodyText = bodyText.replace(/\n/g, "%0D%0A");
 
-  // Arma y abre el enlace mailto
-  const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
+  const mailtoLink = `mailto:${to}?subject=${subject}&body=${bodyText}`;
   window.location.href = mailtoLink;
 });
 
