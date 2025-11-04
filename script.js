@@ -573,7 +573,7 @@ function verProximoServicio() {
   }
 }
 document.getElementById('sendEmailBtn').addEventListener('click', () => {
-  const to = "tck@empresa.com";
+  const to = "tck@olimp0.com";
   const subject = encodeURIComponent("Nuevo reporte preventivo");
 
   // Obtiene los valores sin codificar
@@ -605,6 +605,5 @@ document.getElementById('sendEmailBtn').addEventListener('click', () => {
     
     // Abrir cliente de correo predeterminado
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
-});
 
 
