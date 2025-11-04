@@ -583,21 +583,23 @@ document.getElementById('sendEmailBtn').addEventListener('click', () => {
   const status = get('status_test');
   const notes = get('notes_Esp');
 
-  // Construye el texto normal (sin encode todavía)
-  let bodyText = 
-    `Hola,\n\nTienes un nuevo reporte preventivo:\n\n` +
-    `Folio: ${folio}\n` +
-    `Empresa: ${company}\n` +
-    `Modelo: ${model}\n` +
-    `Serial: ${serial}\n` +
-    `Status: ${status}\n` +
-    `Notas: ${notes}\n\n` +
-    `Por favor, adjunta el archivo del registro antes de enviar.\n\nGracias.`;
+  // 💡 Usamos HTML con <br> para asegurar formato visible en BlueMail
+  const htmlBody =
+`Hola,<br><br>
+Tienes un nuevo reporte preventivo:<br><br>
+<strong>Folio:</strong> ${folio}<br>
+<strong>Empresa:</strong> ${company}<br>
+<strong>Modelo:</strong> ${model}<br>
+<strong>Serial:</strong> ${serial}<br>
+<strong>Status:</strong> ${status}<br>
+<strong>Notas:</strong> ${notes}<br><br>
+Por favor, adjunta el archivo del registro antes de enviar.<br><br>
+Gracias.`;
 
-  // 🔥 Reemplaza \n por %0D%0A (salto compatible con todos)
-  bodyText = bodyText.replace(/\n/g, "%0D%0A");
+  // Codificamos todo el HTML como texto URL
+  const body = encodeURIComponent(htmlBody);
 
-  const mailtoLink = `mailto:${to}?subject=${subject}&body=${bodyText}`;
+  const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
   window.location.href = mailtoLink;
 });
 
