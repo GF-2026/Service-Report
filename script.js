@@ -573,28 +573,35 @@ function verProximoServicio() {
   }
 }
 document.getElementById('sendEmailBtn').addEventListener('click', () => {
-    const to = "tck@olimp0.com"; // destinatario fijo
-    const subject = encodeURIComponent("Nuevo reporte preventivo");
-    
-    // Recolectar algunos datos del formulario
-    const company = encodeURIComponent(get('company'));
-    const folio = encodeURIComponent(generateFolio('folio')); // si tienes tu función generate
-    const model = encodeURIComponent(get('model'));
-    const serial = encodeURIComponent(get('serial'));
-    const status = encodeURIComponent(get('status_test'));
-    const notes = encodeURIComponent(get('notes_Esp'));
-    
-    // Cuerpo del mensaje
-    const body = encodeURIComponent(
-        `Hola,\n\nTienes un nuevo reporte preventivo:\n\n` +
-        `Folio: ${folio}\n` +
-        `Empresa: ${company}\n` +
-        `Modelo: ${model}\n` +
-        `Serial: ${serial}\n` +
-        `Status: ${status}\n` +
-        `Notas: ${notes}\n\n` +
-        `Por favor, adjunta el archivo del registro antes de enviar.\n\nGracias.`
-    );
+  const to = "tck@empresa.com";
+  const subject = encodeURIComponent("Nuevo reporte preventivo");
+
+  // Obtiene los valores sin codificar
+  const company = get('company');
+  const folio = generateFolio('folio');
+  const model = get('model');
+  const serial = get('serial');
+  const status = get('status_test');
+  const notes = get('notes_Esp');
+
+  // Usa \r\n para compatibilidad con todos los clientes de correo
+  const bodyText = 
+    `Hola,\r\n\r\nTienes un nuevo reporte preventivo:\r\n\r\n` +
+    `Folio: ${folio}\r\n` +
+    `Empresa: ${company}\r\n` +
+    `Modelo: ${model}\r\n` +
+    `Serial: ${serial}\r\n` +
+    `Status: ${status}\r\n` +
+    `Notas: ${notes}\r\n\r\n` +
+    `Por favor, adjunta el archivo del registro antes de enviar.\r\n\r\nGracias.`;
+
+  // Ahora sí codificas todo el cuerpo completo
+  const body = encodeURIComponent(bodyText);
+
+  // Arma y abre el enlace mailto
+  const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
+  window.location.href = mailtoLink;
+});
     
     // Abrir cliente de correo predeterminado
     window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
