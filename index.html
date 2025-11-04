@@ -65,8 +65,7 @@
             <h6> Si detectas fallas antes de iniciar el servicio, toma evidencia.</h6>
             <div><label>Si el equipo no puede operar, explica porqué:<br></label><input type="text" id="if_not_work"></div>
             <div><label>Anota el número de parte a cambiar:<br></label><input type="text" id="part_change"></div>
-            </div>
-            
+            </div>            
             <h6>Ubicar elemento a cambiar en el diagrama y adjuntar foto en el correo.</h6>
 <!-- 5– Mediciones -->
             <hr>
@@ -171,13 +170,15 @@
                 <div><label>Temp. ambiente (°C):</label><input type="text" id="heat_from"></div>
                 <div><label>Punto máximo -10 (°C):</label><input type="text" id="heat_target"></div>
                 <label><input type="checkbox" id="heat_test_ok">Prueba de calentamiento (soak 30 min)</label>
+                <div><label>Punto máximo -10 (°C):</label><input type="text" id="temp_high"></div>
+                <div><label>Punto máximo +10 (°C):</label><input type="text" id="temp_low"></div>                
+                <label><input type="checkbox" id="cold_test_ok">Prueba de enfriamiento (soak 30 min)</label>
+                <div><label>Duración (min):</label><input type="text" id="pulldown"></div>
+                <label><input type="checkbox">Setear a valores propios para la humedad</label>
                 <div><label>Humedad baja (20 %HR):</label><input type="text" id="hum_low"></div>
                 <div><label>Humedad alta (80 %HR):</label><input type="text" id="hum_high"></div>
                 <label><input type="checkbox" id="hum_test_ok">Prueba de humedad (soak 30 min c/u)</label>
-                <div><label>Punto máximo -10 (°C):</label><input type="text" id="temp_high"></div>
-                <div><label>Punto máximo +10 (°C):</label><input type="text" id="temp_low"></div>
-                <label><input type="checkbox" id="cold_test_ok">Prueba de enfriamiento (soak 30 min)</label>
-                <div><label>Duración (min):</label><input type="text" id="pulldown"></div>
+
             </div>
 
 <!-- Pregunta: ¿Cuándo se sugiere el siguiente servicio? -->
