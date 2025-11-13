@@ -153,6 +153,7 @@ noleaks_ok: chk('noleaks_ok'),
 notes_Esp: get('notes_Esp'),
 notes_Cus: get('notes_Cus'),
 OT: get('OT'),
+overloads_config_ok: chk('overloads_config_ok'),
 pallets_ok: chk('pallets_ok'),
 part_change: get('part_change'),
 pay_order: get('pay_order'),
@@ -195,6 +196,7 @@ resultado_servicio: estado('resultado_servicio'),
 rotalocks_ok: chk('rotalocks_ok'),
 satus: get('satus'),
 serial: get('serial'),
+sensors_ok: chk('sensors_ok'),
 shock_free_ok: chk('shock_free_ok'),
 sights_ok: chk('sights_ok'),
 signaturePreviewCus: getSignatureData('signaturePreviewCus'),
@@ -342,6 +344,7 @@ function renderTable(){
 'noleaks_ok',
 'notes',
 'OT',
+'overloads_config_ok',
 'pallets_ok',
 'part_change',
 'pay_order',
@@ -384,6 +387,7 @@ function renderTable(){
 'rotalocks_ok',
 'satus',
 'serial',
+'sensors_ok',
 'shock_free_ok',
 'sights_ok',
 'signaturePreviewCus',
@@ -602,5 +606,3 @@ Gracias.`;
   const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
   window.location.href = mailtoLink;
 });
-
-
