@@ -6,6 +6,7 @@ let records = JSON.parse(localStorage.getItem('records') || '[]');
 let currentSignatureTarget = null; // 'esp' o 'cus'
 const enableDeleteButton = false;   // true = activo, false = desactivado
 const storageKey = 'records';
+//
 const CACHE_NAME = 'service-report-cache-v1';
 const FILES = [
   '/',
@@ -15,7 +16,7 @@ const FILES = [
   '/manifest.json',
   '/icon.png'
 ];
-
+//
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(FILES))
