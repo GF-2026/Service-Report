@@ -16,6 +16,16 @@ const FILES = [
   '/manifest.json',
   '/icon.png'
 ];
+window.addEventListener("DOMContentLoaded", () => {
+  const guardado = JSON.parse(localStorage.getItem("serviceReportData"));
+
+  if (guardado) {
+    Object.entries(guardado).forEach(([campoId, valor]) => {
+      const campo = document.getElementById(campoId);
+      if (campo) campo.value = valor;
+    });
+  }
+});
 //
 self.addEventListener('install', event => {
   event.waitUntil(
