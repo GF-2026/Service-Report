@@ -1,0 +1,20 @@
+{
+  "name": "Service-Report",
+  "short_name": "SReport",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0055ff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "LOGO.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
