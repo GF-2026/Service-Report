@@ -422,7 +422,6 @@ function renderTable(){
 'coils_ok',
 'armafles_ok',
 'injection_valve_ok',
-'oil_ok',
 'protect_lowleveloil_ok',
 'sights_ok',
 'acid_ok',
